@@ -14,6 +14,9 @@ def utility_processor():
         return tmdb_client.get_poster_url(path, size)
     return {"tmdb_image_url": tmdb_image_url}
 
+@app.route("/movies/<movie_id>")
+def movie_details(movie_id):
+    return render_template("movie_details.html")
 
 
 if __name__ == "__main__":
