@@ -5,3 +5,14 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+/*!
+<script type="text/javascript">
+$(document).ready(function(){
+    $('btn btn-outline-info').onclick(function(){
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    })
+})
+</script>
+*/
