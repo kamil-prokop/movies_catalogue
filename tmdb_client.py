@@ -1,7 +1,8 @@
 import requests
 from flask import Flask
 
-API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTIwMmUwYTRhZDU3YmI5M2MwNzI0ZmM4YjBkYWEwMyIsInN1YiI6IjYzZmU3M2FlOWYxYmU3MDA3Y2E2MzQ1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jjodlyaFWOKrrjV4aaYrprLUmukeTttd_4gRMyUURIQ"
+import os
+API_TOKEN = os.environ.get("TMDB_API_TOKEN", "")
 
 app = Flask(__name__)
 
