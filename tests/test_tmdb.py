@@ -59,3 +59,22 @@ def test_get_single_movie_cast(monkeypatch):
    monkeypatch.setattr("tmdb_client.requests.get", requests_mock)
    single_movie_cast = tmdb_client.get_single_movie_cast(movie_id=1)
    assert single_movie_cast == mock_single_movie_cast["cast"]
+
+from main import app
+import pytest
+
+@pytest.mark.parametrize('list_type', (
+   ('movie/upcoming'),
+   ('movie/popular'),
+   ('movie/top_rated'),
+   ('movie/now_playing')
+))
+
+def test_homepage(monkeypatch, list_type):
+   api_mock = Mock(return_value={'results': []})
+   monkeypatch.setattr("tmdb_client.call_tmdb_api", api_mock)
+
+   with app.test_client() as client:
+       response = client.get('/')
+       assert response.status_code == 200
+       api_mock.assert_called_once_with('movie/popular')
